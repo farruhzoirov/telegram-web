@@ -6,9 +6,11 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Telegram</title>
+    <link rel="shortcut icon" href="icon/icon.png" type="image/x-icon" />
     <link rel="stylesheet" href="assets/css/normalize.css">
     <link rel="stylesheet" href="assets/css/styles.css">
     <script defer src="assets/js/main.js"></script>
+
 </head>
 <body>
 <section class="app-wrapper">
@@ -146,9 +148,9 @@
                     </div>
                 </li>
                 <li class="users__item">
-                    <img src="img/oggivoy.jpg" alt="">
+                    <img src="img/call-icon.svg" alt="">
                     <div>
-                        <strong>Og'abek brat</strong>
+                        <strong>Sherzod kursdoshim</strong>
                         <span>Ok</span>
                     </div>
 
@@ -159,7 +161,7 @@
                 <li class="users__item">
                     <img src="img/oggivoy.jpg" alt="">
                     <div>
-                        <strong>Og'abek brat</strong>
+                        <strong>Sherzod kursdoshim</strong>
                         <span>Ok</span>
                     </div>
 
@@ -172,10 +174,8 @@
 
     </section>
 
-
     <section class="chatting-content">
-
-        <main class="chatting-content__main">
+        <div class="chatting-content__main">
             <header>
                <div class="avatar-info">
                    <img src="img/oggivoy.jpg" alt="">
@@ -184,8 +184,58 @@
                        <span>last seen recently</span>
                    </div>
                </div>
+                <div class="avatar-info__handlers">
+                    <button>
+                        <span>
+                            <img src="img/searching-btn.svg" alt="Searching info">
+                        </span>
+                    </button>
 
+                    <button>
+                        <span>
+                            <img src="img/call-icon.svg" alt="Calling">
+                        </span>
+                    </button>
+
+                    <button>
+                        <span>
+                            <img src="img/more-icon.svg" alt="More">
+                        </span>
+                    </button>
+                </div>
             </header>
+        </div>
+
+        <main>
+            <section class="letters-wrapper">
+                <div class="recieved-letters">
+                </div>
+
+                <div class="sended-letters">
+
+                </div>
+
+                <audio id="chat-sound">
+                    <source src="media/chatsound.mp3">
+                </audio>
+                <audio id="call-end-sound">
+                    <source src="media/callend.mp3">
+                </audio>
+            </section>
+            <form class="chatting-surround">
+                <div>
+                     <span>
+                         <img src="img/emoji-icon.svg" alt="">
+                     </span>
+                    <input type="text" placeholder="Message...">
+                    
+                    <button>
+                        <span>
+                            <img src="img/send-icon.svg" alt="">
+                        </span>
+                    </button>
+                </div>
+            </form>
         </main>
     </section>
 </section>

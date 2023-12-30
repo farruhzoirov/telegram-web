@@ -8,6 +8,7 @@ html {
  *::after {
    box-sizing: inherit;
    font-family: sans-serif;
+   font-size: 1rem;
  }
 
  button {
@@ -15,6 +16,7 @@ html {
    margin: 0;
    padding: 0;
    cursor: pointer;
+   background-color: transparent;
  }
 
 
@@ -22,6 +24,7 @@ html {
  ul,li,h1,h2,h3,h4,h5,h6,a,p {
    margin: 0;
    padding: 0;
+   font-family: inherit;
  }
 
 
@@ -35,8 +38,8 @@ html {
 
 .app-wrapper {
   display: flex;
-  align-items: flex-start;
-
+  height: 100%;
+  background-attachment: fixed;
 }
 
 
@@ -45,8 +48,8 @@ html {
   max-width: 25%;
   width: 100%;
   height: 100%;
-
   border-right: 1px solid #f5f5f5;
+  overflow: hidden;
 }
 
 
@@ -58,7 +61,6 @@ html {
   padding: 0.75rem 1.5rem;
   position: sticky;
   top: 0;
-  z-index: 2;
 
 
   div:first-child {
@@ -82,7 +84,7 @@ html {
 
 
 .searching-wrapper {
-  width: 19.25rem;
+  width: 90%;
   height: 2.5rem;
   display: flex;
   align-items: center;
@@ -102,6 +104,7 @@ html {
     display: block;
     border: 0;
     background-color: transparent;
+    width: 100%;
     height: 100%;
     outline: 1px solid #f5f5f5;
   }
@@ -110,9 +113,8 @@ html {
 
 .app-sidebar__main {
   overflow: scroll;
-  overflow-x:hidden ;
   width: 100%;
-  height: 100vh;
+  height: calc(100vh - 4rem);
 }
 
 .app-sidebar__main::-webkit-scrollbar {
@@ -138,10 +140,9 @@ html {
 
   &:hover {
     background-color: #f5f5f5;
+    border-radius: 0.5rem;
   }
-  &:active {
-    background-color: darkblue;
-  }
+
 
   img {
     display: block;
@@ -176,20 +177,43 @@ html {
   }
 }
 
+
+.users-item--active {
+  background-color: cornflowerblue;
+}
+
 //Chatting content
 
 .chatting-content {
   width: 100%;
   max-width: 75%;
 
+
+  main {
+    position: relative;
+    z-index: 0;
+    display: block;
+    width: calc(100% - 0.5rem);
+    margin-left: auto;
+    min-height: 100vh;
+    height: calc(100vh - 73px);
+    background-color: #3D70B8;
+  }
 }
 
 
 .chatting-content__main {
   header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 75%;
     padding: 0.75rem 1.5rem;
     background-color: white;
     border-bottom: 1px solid #f5f5f5;
+    position: fixed;
+    top: 0;
+    z-index: 10;
   }
 
   img {
@@ -198,12 +222,130 @@ html {
     width: 3rem;
     height: 3rem;
     object-fit: cover;
-    margin-right: 1rem;
+    margin-right: 1.5rem;
+  }
+
+}
+
+.avatar-info {
+  display: flex;
+  align-items: center;
+
+
+  div {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  strong {
+    margin-bottom: 0.1rem;
+  }
+
+  span {
+    color:#707991;
+  }
+}
+
+.avatar-info__handlers {
+
+  button  {
+    background-color: transparent;
+    width: 1.5rem;
+    height: 1.5rem;
+    margin-left: 1.5rem;
+  }
+
+  button span {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+
+  img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    background-color: transparent;
   }
 }
 
 
+.chatting-surround {
+   position: absolute;
+   top: 90vh;
+   width: 100%;
+
+
+  div {
+    display: flex;
+    align-items: center;
+    max-width: calc(100% - 6rem);
+    width: 100%;
+    height: 3.8rem;
+    padding: 0.5rem 0.8rem;
+    margin-left: 3rem;
+    margin-right: 3rem;
+    border-radius: 0.5rem;
+    background-color: #fff;
+  }
+  div span {
+    margin-right: 1rem;
+    cursor: pointer;
+  }
+
+  input {
+    display: block;
+    flex-grow: 1;
+    height: 100%;
+    border: 0;
+    border-radius: 0.5rem;
+    outline: 1px solid #ddd;
+    transition: .5s outline ease;
+    padding: 0.8rem 1rem;
+    margin-right: 1.5rem;
+  }
+
+  input:focus {
+    outline: 1px solid #3D70B8;
+  }
+
+  button {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+  button span ,img {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.letters-wrapper {
+  display: flex;
+  justify-content: space-between;
+  position: absolute;
+  top: 80vh;
+  width: 90%;
+  margin-left: 3rem;
+  margin-right: 3rem;
+}
+
+.recieved-letters {
+  max-width: 25rem;
+  width: 100%;
+  padding: 0.25rem 0.75rem;
+  border-radius: 0.75rem;
+  background-color: #ffffff;
+  transform: translateY(-10vh);
+}
 
 
 
-
+.sended-letters {
+  max-width: 25rem;
+  width: 100%;
+  padding: 0.25rem 0.75rem;
+  border-radius: 0.75rem;
+  background-color: green;
+}
