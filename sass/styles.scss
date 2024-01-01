@@ -186,7 +186,9 @@ html {
 
 .chatting-content {
   width: 100%;
-  max-width: 75%;
+  max-width: 70%;
+  overflow: scroll;
+  overflow-x:hidden ;
 
 
   main {
@@ -348,4 +350,28 @@ html {
   padding: 0.25rem 0.75rem;
   border-radius: 0.75rem;
   background-color: green;
+}
+
+.message {
+  position: relative;
+  width: max-content;
+  min-width: 156px;
+  max-width: 300px;
+  margin-bottom: 44px;
+  padding: 18px 30px;
+  border-radius: 5px;
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 19px;
+  color: #fff;
+  background-color: red;
+
+  &-time {
+    position: absolute;
+    bottom: -20px;
+    font-size: 12px;
+    font-weight: 300;
+    line-height: 15px;
+    color: #707070;
+  }
 }

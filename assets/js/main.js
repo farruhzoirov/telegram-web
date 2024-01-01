@@ -1,14 +1,53 @@
 "use strict"
 
-const contactsList = document.querySelector('.users__list') ;
-const contactItems = contactsList.querySelectorAll('.users__item');
-const sendingForm = document.querySelector('.chatting-surround');
-const recievedLetter = document.querySelector('.recieved-letters');
-const sendedLetter = document.querySelector('.sended-letters');
-const writerInput = sendingForm.querySelector('input');
+function $(selector) {
+    return document.querySelector(selector);
+}
 
-const chatSound = document.getElementById('chat-sound');
+function $$(selector) {
+    return document.querySelectorAll(selector);
+}
+
+
+const contactsList = $('.users__list') ;
+const sendingForm = $('.chatting-surround');
+const recievedLetter = $('.recieved-letters');
+const sendedLetter = $('.sended-letters');
+const writerInput = $('#message-field');
+const contactItems = $$('.users__item');
+
+
+
+
+const chatSound = $('#chat-sound');
 let sendedTextCollector = [];
+
+
+function formSubmit() {
+
+    const sendingTime = timeReturner();
+
+    sendedLetter.innerHTML += `
+       <li class="message send">
+                <p>${writerInput.value}</p>
+                <time class="message-time">${sendingTime}</time>
+       </li>
+    `
+    setTimeout( () => {
+        chatSound.play();
+    }, 200);
+
+
+    writerInput.focus();
+}
+
+
+sendingForm.addEventListener('submit', (e)  => {
+    e.preventDefault();
+    formSubmit();
+    writerInput.value = '';
+})
+
 function deActivateItems() {
     contactItems.forEach( (contactItem) => {
         contactItem.classList.remove('users-item--active')
@@ -17,59 +56,33 @@ function deActivateItems() {
 }
 
 contactItems.forEach( ( item, index) => {
-
-
-
         item.addEventListener('click', (e) => {
             e.preventDefault();
             deActivateItems();
             item.classList.add('users-item--active')
             item.style.backgroundColor = 'cornflowerblue';
         })
-
 })
 
-const writerToWindowSend = (arr) => {
 
-     arr.forEach(( item, index) => {
-         sendedLetter.style.display = 'inline-block';
-         const sendedText = document.createElement('span');
-         sendedText.innerHTML += `${item.senderText}`;
-         sendedLetter.append(sendedText);
-         chatSound.play();
-         writerInput.value = '';
-     })
+
+function addZero(time) {
+  if (time < 10) {
+
+    return `0${time}`;
+
+  } else {
+      return time;
+  }
 }
 
-const writerToWindowRecieve = (arr) => {
-      arr.forEach(( item, index) => {
-          recievedLetter.style.display = 'block';
-          const recievedText = document.createElement('span');
-          recievedText.innerHTML = `Yaxshimisan Farruh!`;
-          recievedLetter.append(recievedText);
-          chatSound.play();
-      })
-}
-
-
-
-const sendingLettersHandler = (e) => {
-
-     e.preventDefault();
-      const sendedData = {
-          senderText: writerInput.value
-      }
-      sendedTextCollector.push(sendedData);
-      writerToWindowSend(sendedTextCollector);
-
-      setTimeout(() => {
-          writerToWindowRecieve(sendedTextCollector)
-      }, 2000);
+function timeReturner() {
+       return  addZero(new Date().getHours()) + ':' + addZero(new Date().getMinutes())
 }
 
 
 
 
-sendingForm.addEventListener('submit', sendingLettersHandler)
+
 
 

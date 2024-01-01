@@ -155,7 +155,9 @@ a {
 
 .chatting-content {
   width: 100%;
-  max-width: 75%;
+  max-width: 70%;
+  overflow: scroll;
+  overflow-x: hidden;
 }
 .chatting-content main {
   position: relative;
@@ -279,24 +281,43 @@ a {
 }
 
 .recieved-letters {
-  display: none;
   max-width: 25rem;
   width: 100%;
   padding: 0.25rem 0.75rem;
   border-radius: 0.75rem;
   background-color: #ffffff;
-
+  transform: translateY(-10vh);
 }
 
 .sended-letters {
-  display: none;
   max-width: 25rem;
   width: 100%;
   padding: 0.25rem 0.75rem;
   border-radius: 0.75rem;
   background-color: green;
-  transform: translateY(-10vh);
-  margin-left: auto;
+}
+
+.message {
+  position: relative;
+  width: max-content;
+  min-width: 156px;
+  max-width: 300px;
+  margin-bottom: 44px;
+  padding: 18px 30px;
+  border-radius: 5px;
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 19px;
+  color: #fff;
+  background-color: red;
+}
+.message-time {
+  position: absolute;
+  bottom: -20px;
+  font-size: 12px;
+  font-weight: 300;
+  line-height: 15px;
+  color: #707070;
 }
 
 /*# sourceMappingURL=styles.css.map */
